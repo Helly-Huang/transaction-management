@@ -1,0 +1,10 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8088:80"  # 将容器的80端口映射到宿主机的8088端口
+    volumes:
+      - /Users/admin/Documents/nginx/conf:/etc/nginx/conf.d:ro  # 挂载配置文件为只读模式
+      - /Users/admin/Documents/nginx/html:/usr/share/nginx/html:ro  # 可选：挂载静态文件目录为只读模式（如果有的话）
+    restart: unless-stopped  # 在容器退出时总是重启容器
